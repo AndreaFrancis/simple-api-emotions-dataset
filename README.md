@@ -6,7 +6,7 @@ This project is a very simple finder for text in a emotions dataset from Hugging
 Dataset: https://huggingface.co/datasets/emotion
 
 ## Architecture
-
+![Basic architecture](architecture.png)
 
 ## Requirements
 - Default AWS profile configured in environment
@@ -29,7 +29,7 @@ Dataset: https://huggingface.co/datasets/emotion
 - Go to folder api-stack
 - Execute ```serverless deploy``` (This will create all resources needed in AWS)
 - Go to the root folder 
-- Run crawler ```python crawler.py ``` (This will load the dataset into Dynamodb table)
+- Run locally crawler ```python crawler.py ``` (This will load the dataset into Dynamodb table)
 
 
 ## API Reference
@@ -53,12 +53,6 @@ Dataset: https://huggingface.co/datasets/emotion
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `value`      | `string` | Value of item to fetch |
-
-
-
-## Demo
-
-Insert gif or link to demo
 
 
 ## Demo
