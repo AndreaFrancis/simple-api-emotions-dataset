@@ -6,7 +6,7 @@ This project is a very simple finder for text in a emotions dataset from Hugging
 Dataset: https://huggingface.co/datasets/emotion
 
 ## Architecture
-![Basic architecture](architecture.png)
+![architecture](architecture.PNG)
 
 ## Requirements
 - Default AWS profile configured in environment
