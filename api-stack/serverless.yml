@@ -1,0 +1,54 @@
+
+service: emotions
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  stage: dev
+  region: us-east-1
+
+  iam:
+   role:
+     statements:
+        - Effect: Allow
+          Action: 'logs:CreateLogGroup'
+          Resource: '*'
+        - Effect: Allow
+          Action: 'logs:CreateLogStream'
+          Resource: '*'
+        - Effect: Allow
+          Action: 'logs:PutLogEvents'
+          Resource: '*'
+        - Effect: Allow
+          Action: 'logs:PutLogEvents'
+          Resource: '*'
+        - Effect: Allow
+          Action: 'dynamodb:GetItem'
+          Resource: '*'
+        - Effect: Allow
+          Action: 'dynamodb:Scan'
+          Resource: '*'   
+
+functions:
+  get:
+    handler: app.handler
+    events:
+      - httpApi:
+         path: /emotions
+         method: get
+
+resources: 
+      Resources:
+        emotionsTable:
+          Type: AWS::DynamoDB::Table
+          Properties:
+            TableName: emotionsTable
+            AttributeDefinitions:
+              - AttributeName: id
+                AttributeType: S
+            KeySchema:
+              - AttributeName: id
+                KeyType: HASH
+            ProvisionedThroughput:
+              ReadCapacityUnits: 1
+              WriteCapacityUnits: 1
